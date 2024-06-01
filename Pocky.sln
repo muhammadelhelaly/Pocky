@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.34929.205
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pocky.Api", "Pocky.Api\Pocky.Api.csproj", "{370488CA-6BBB-4D49-8190-BD5E0F88587F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pocky.Api", "Pocky.Api\Pocky.Api.csproj", "{370488CA-6BBB-4D49-8190-BD5E0F88587F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pocky.WASM", "Pocky.WASM\Pocky.WASM.csproj", "{65E1BA68-2CA8-412C-8213-B748AB452469}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pocky.WASM", "Pocky.WASM\Pocky.WASM.csproj", "{65E1BA68-2CA8-412C-8213-B748AB452469}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

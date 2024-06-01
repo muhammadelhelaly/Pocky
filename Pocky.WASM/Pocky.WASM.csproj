@@ -7,9 +7,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Pages\Login.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="9.0.0-preview.4.24267.6" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.0-preview.4.24267.6" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.0-preview.4.24267.6" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Login.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\Login.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\Auth\Login.razor" />
   </ItemGroup>
 
 </Project>

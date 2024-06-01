@@ -9,6 +9,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(options =>
+    options.AddDefaultPolicy(builder =>
+        builder
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .WithOrigins("https://localhost:7144")
+            .AllowCredentials()
+    )
+);
+
 builder.Services.AddDbContext<ApplicationDbContext>(options => 
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
@@ -28,6 +38,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors();
 app.UseAuthorization();
 
 app.MapIdentityApi<IdentityUser>();
