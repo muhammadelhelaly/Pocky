@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.34929.205
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pocky.Api", "Pocky.Api\Pocky.Api.csproj", "{370488CA-6BBB-4D49-8190-BD5E0F88587F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pocky.WASM", "Pocky.WASM\Pocky.WASM.csproj", "{65E1BA68-2CA8-412C-8213-B748AB452469}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{370488CA-6BBB-4D49-8190-BD5E0F88587F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{370488CA-6BBB-4D49-8190-BD5E0F88587F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{370488CA-6BBB-4D49-8190-BD5E0F88587F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65E1BA68-2CA8-412C-8213-B748AB452469}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65E1BA68-2CA8-412C-8213-B748AB452469}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65E1BA68-2CA8-412C-8213-B748AB452469}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65E1BA68-2CA8-412C-8213-B748AB452469}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
