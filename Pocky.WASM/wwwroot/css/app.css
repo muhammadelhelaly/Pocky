@@ -76,3 +76,8 @@
 code {
     color: #c02d76;
 }
+
+/* Custom styles */
+*{
+    font-family: 'Roboto'
+}
