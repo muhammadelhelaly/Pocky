@@ -8,7 +8,7 @@
                 <NotAuthorized>
                     <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(AuthLayout)">
                         <NotAuthorized>
-                            <p>Not authorized</p>
+                            <RedirectToLogin />
                         </NotAuthorized>
                     </AuthorizeRouteView>
                 </NotAuthorized>
