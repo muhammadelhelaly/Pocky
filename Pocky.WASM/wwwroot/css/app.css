@@ -78,6 +78,10 @@ code {
 }
 
 /* Custom styles */
-*{
+* {
     font-family: 'Roboto'
+}
+
+.bg-light {
+    background-color: rgb(245, 249, 251) !important;
 }
