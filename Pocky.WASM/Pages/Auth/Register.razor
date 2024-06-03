@@ -1,4 +1,5 @@
-﻿@page "/login"
+﻿@page "/register"
+
 
 @inject IAccountManagement AccountManagement
 @inject NavigationManager Navigation
@@ -9,21 +10,19 @@
             <div class="row g-6">
                 <div class="col-12">
                     <div class="text-center">
-                        <h3 class="fw-bold fs-5 mb-2">Sign In</h3>
-                        <p class="text-muted">Login to your account</p>
+                        <h3 class="fw-bold fs-5 mb-2">Register</h3>
+                        <p class="text-muted">Create a new account</p>
                     </div>
                 </div>
             </div>
             <EditForm Model="Model" OnValidSubmit="Submit">
                 <DataAnnotationsValidator />
                 <div class="form-floating mb-4">
-                    <InputText
-                        @bind-Value="Model!.Email"
-                        type="email"
-                        class="form-control rounded-2 border-0 bg-gray"
-                        id="email"
-                        placeholder=""
-                    />
+                    <InputText @bind-Value="Model!.Email"
+                               type="email"
+                               class="form-control rounded-2 border-0 bg-gray"
+                               id="email"
+                               placeholder="" />
                     <label for="email">Email</label>
                     <ValidationMessage For="() => Model.Email" />
                 </div>
@@ -36,40 +35,38 @@
                     <label for="password">Password</label>
                     <ValidationMessage For="() => Model.Password" />
                 </div>
-                @if (IsNew)
-                {
-                    <div class="col-12">
-                        <div class="alert alert-success">
-                            <span>User created successfully</span>
-                        </div>
-                    </div>
-                }
+                <div class="form-floating mb-4">
+                    <InputText @bind-Value="Model!.ConfirmPassword"
+                               type="password"
+                               class="form-control rounded-2 border-0 bg-gray"
+                               id="confirmPassword"
+                               placeholder="" />
+                    <label for="confirmPassword">Confirm Password</label>
+                    <ValidationMessage For="() => Model.ConfirmPassword" />
+                </div>
                 <div class="col-12 @(errorList.Any() ? string.Empty : "d-none")">
                     <div class="alert alert-danger">
-                        @foreach(var error in errorList)
+                        @foreach (var error in errorList)
                         {
                             <span>@error</span>
                         }
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block btn-lg fs-6 fw-bolder py-3 w-100" disabled="@loading">Sign in</button>
+                <button type="submit" class="btn btn-primary btn-block btn-lg fs-6 fw-bolder py-3 w-100" disabled="@loading">Sign up</button>
             </EditForm>
         </div>
     </div>
     <div class="text-center mt-4">
         <p class="text-muted">
-            Don't have an account?
-            <NavLink href="/register" class="text-none">Sign up</NavLink>
+            You have an account?
+            <NavLink href="/login" class="text-none">Sign in</NavLink>
         </p>
     </div>
 </div>
 
 @code {
     [SupplyParameterFromForm]
-    private LoginModel? Model { get; set; }
-
-    [SupplyParameterFromQuery(Name = "IsNew")]
-    private bool IsNew { get; set; }
+    private RegisterModel? Model { get; set; }
 
     private string[] errorList = [];
     private bool loading = false;
@@ -80,11 +77,11 @@
     {
         loading = true;
 
-        var result = await AccountManagement.LoginAsync(Model!);
+        var result = await AccountManagement.RegisterAsync(Model!.Email, Model!.Password);
 
         if (result.Succeeded)
         {
-            Navigation.NavigateTo("/");
+            Navigation.NavigateTo("/login?isNew=true");
         }
         else
         {

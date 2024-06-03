@@ -106,3 +106,7 @@ code {
 .container {
     max-width: 1080px !important;
 }
+
+.text-none {
+    text-decoration: none !important;
+}
