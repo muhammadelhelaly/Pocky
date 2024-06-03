@@ -85,3 +85,24 @@ code {
 .bg-light {
     background-color: rgb(245, 249, 251) !important;
 }
+
+.bg-gray {
+    background-color: #ebf1f7;
+}
+
+.form-control.bg-gray:focus {
+    background-color: #ebf1f7;
+    box-shadow: none;
+}
+
+.form-floating label::after{
+    background-color: transparent !important;
+}
+
+.form-floating label, .text-muted {
+    color: #95aac9 !important;
+}
+
+.container {
+    max-width: 1080px !important;
+}

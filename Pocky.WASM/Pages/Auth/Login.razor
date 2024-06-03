@@ -1,7 +1,74 @@
 ﻿@page "/login"
 
-<h3>Login</h3>
+@inject IAccountManagement AccountManagement
+@inject NavigationManager Navigation
+
+<div class="col-12 col-md-5 col-lg-4">
+    <div class="card card-shadow border-0 rounded-3">
+        <div class="card-body p-4">
+            <div class="row g-6">
+                <div class="col-12">
+                    <div class="text-center">
+                        <h3 class="fw-bold fs-5 mb-2">Sign In</h3>
+                        <p class="text-muted">Login to your account</p>
+                    </div>
+                </div>
+            </div>
+            <EditForm Model="Model" OnValidSubmit="Submit">
+                <DataAnnotationsValidator />
+                <div class="form-floating mb-4">
+                    <InputText
+                        @bind-Value="Model!.Email"
+                        type="email"
+                        class="form-control rounded-2 border-0 bg-gray"
+                        id="email"
+                        placeholder=""
+                    />
+                    <label for="email">Email</label>
+                    <ValidationMessage For="() => Model.Email" />
+                </div>
+                <div class="form-floating mb-4">
+                    <InputText @bind-Value="Model!.Password"
+                               type="password"
+                               class="form-control rounded-2 border-0 bg-gray"
+                               id="password"
+                               placeholder="" />
+                    <label for="password">Password</label>
+                    <ValidationMessage For="() => Model.Password" />
+                </div>
+                <div class="col-12 @(errorList.Any() ? string.Empty : "d-none")">
+                    <div class="alert alert-danger">
+                        @foreach(var error in errorList)
+                        {
+                            <span>@error</span>
+                        }
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block btn-lg fs-6 fw-bolder py-3 w-100">Sign in</button>
+            </EditForm>
+        </div>
+    </div>
+</div>
 
 @code {
+    [SupplyParameterFromForm]
+    private LoginModel? Model { get; set; }
 
+    private string[] errorList = [];
+
+    protected override void OnInitialized() => Model ??= new();
+
+    private async Task Submit()
+    {
+        var result = await AccountManagement.LoginAsync(Model!);
+
+        if (result.Succeeded)
+        {
+            Navigation.NavigateTo("/");
+        }
+        else
+        {
+            errorList = result.ErrorList;
+        }
+    }
 }
